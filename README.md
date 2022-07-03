@@ -24,3 +24,9 @@ On the victim machine, either alter the source so no arguments are required or r
 - Code was written in a field therefore full of bugs
 - The server accepts multiple connections however there is no way to switch at present. Functionality coming soon.
 - Feel free to use and improve. #fixmycode
+
+# Branches:
+- plaintext: Plain-text websocket client
+- secure/main: SSL websocket client
+
+The python server supports both as detailed using the `--ssl` switch.
