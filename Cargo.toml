@@ -6,5 +6,6 @@ edition = "2022"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-tungstenite = "0.16.0"
+tungstenite = {version="0.16.0", features = ["native-tls"]}
 url = "2.2.2"
+native-tls = "0.2.4"

