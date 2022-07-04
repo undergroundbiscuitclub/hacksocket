@@ -45,7 +45,7 @@ async def main():
         task = asyncio.create_task(websocket_serve(ssl=False))
     while True:
         line = await aioconsole.ainput('#>')
-        if line == "ls":
+        if line == "sessions":
             idx = 1
             for x in clients:
                 print(f"{idx} - {x.id} ({x.remote_address[0]})")

