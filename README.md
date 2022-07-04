@@ -21,7 +21,9 @@ On the victim machine, either alter the source so no arguments are required or r
 
 Use `ls` to see all websocket connections.
 
-use `[id]:[Command]` to run commands i.e. if only one connection then `1:dir` will run dir on the first connection listed in `ls`.
+Use `[id]:[Command]` to run commands i.e. if only one connection then `1:dir` will run dir on the first connection listed in `ls`.
+
+Use `exit` to end the server or `1:exit` to end the client connection `1`.
 
 # Bugs:
 
